@@ -38,7 +38,9 @@ header {
 }
 
 .nav-menu li {
-    margin-right: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 80px;
 }
 
 .nav-menu li a {
@@ -98,4 +100,8 @@ footer {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+.container{
+    display: flex ;
+    justify-content: space-between;
 }
