@@ -1,21 +1,43 @@
-// Get the login button and login form modal
-var loginBtn = document.getElementById("loginBtn");
-var loginFormModal = document.getElementById("loginForm");
+// Securely handle user authentication and sensitive data in the front-end
 
-// When the user clicks the login button, display the login form modal
-loginBtn.addEventListener("click", function() {
-    loginFormModal.style.display = "block";
-});
+// Function to handle login form submission securely
+function login(event) {
+    event.preventDefault(); // Prevent default form submission
 
-// When the user clicks on the close button (x), close the login form modal
-var closeBtn = document.getElementsByClassName("close")[0];
-closeBtn.onclick = function() {
-    loginFormModal.style.display = "none";
-};
+    // Get username and password from the form
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-// When the user clicks anywhere outside of the login form modal, close it
-window.onclick = function(event) {
-    if (event.target == loginFormModal) {
-        loginFormModal.style.display = "none";
+    // Validate username and password (e.g., length, format)
+    if (username.length < 5 || password.length < 8) {
+        alert('Invalid username or password format!');
+        return;
     }
-};
+
+    // Send login request to server using fetch API
+    fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Login failed!');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle successful login (e.g., redirect to dashboard)
+        window.location.href = '/dashboard';
+    })
+    .catch(error => {
+        // Handle login error (e.g., display error message)
+        console.error('Login error:', error.message);
+        alert('Login failed. Please try again.');
+    });
+}
+
+// Add event listener to login form submit button
+document.getElementById('loginForm').addEventListener('submit', login);

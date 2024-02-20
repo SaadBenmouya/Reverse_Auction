@@ -5,24 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reverse Auction Platform</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        document.getElementById("loginBtn").addEventListener("click", function() {
-            // Your custom login functionality here
-            alert("Login button clicked!");
-            // Example: Display a login form
-            // document.getElementById("loginForm").style.display = "block";
-        });
-    </script>
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="navbar">
             <div class="container">
-                <h1>Reverse Auction Platform</h1>
-                <ul>
-                    <li><a href="main.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                <h1 class="logo">Reverse Auction Platform</h1>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
                     <!-- Add more navigation links as needed -->
                 </ul>
                 <div class="auth-section">
@@ -48,6 +40,20 @@
             <p>&copy; 2024 Reverse Auction Platform. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
