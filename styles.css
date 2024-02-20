@@ -52,3 +52,13 @@ nav ul li a {
 .login-btn:hover, .signup-btn:hover {
     background-color: #666;
 }
+/* Login Form Styles */
+.login-form {
+    display: none; /* Initially hidden */
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
