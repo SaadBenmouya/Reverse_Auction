@@ -36,19 +36,19 @@ nav ul li a {
     text-decoration: none;
 }
 
-.hero {
-    background-color: #f4f4f4;
-    padding: 50px 0;
-    text-align: center;
+.auth-section {
+    float: right;
 }
 
-.hero h2 {
-    margin-bottom: 20px;
-}
-
-footer {
-    background-color: #333;
+.login-btn, .signup-btn {
+    background-color: #555;
     color: #fff;
-    text-align: center;
-    padding: 20px 0;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background-color: #666;
 }
