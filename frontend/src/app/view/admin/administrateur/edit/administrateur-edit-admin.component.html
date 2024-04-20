@@ -1,0 +1,40 @@
+<p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="Administrateur" [modal]="true" styleClass="p-fluid"
+          [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Administrateur">
+                <div class="grid">
+                    <!--<div class="field col-11 md:col-5">
+                        <label for="extends">extends</label>
+                        <p-dropdown appendTo="body" [options]="extendss" [(ngModel)]="administrateur.extends" id="extends"
+                                    [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" optionLabel="id" placeholder="extends">
+                        </p-dropdown>
+                    </div> -->
+                    <div class="field col-12 md:col-6">
+                        <label for="nom">nom<span style="color: red;">*</span></label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="nom" id="nom"
+                               [(ngModel)]="administrateur.nom"/>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="prenom">prenom<span style="color: red;">*</span></label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="prenom" id="prenom"
+                               [(ngModel)]="administrateur.prenom"/>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined"
+                        (click)="hideEditDialog()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px"
+                        (click)="edit()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>

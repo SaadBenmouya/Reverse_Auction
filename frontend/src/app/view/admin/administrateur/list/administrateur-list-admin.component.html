@@ -1,0 +1,82 @@
+<p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+        <div class="my-2">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
+                    (click)="openNew()"></button>
+            <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger"
+                    (click)="deleteSelectedProducts()"
+                    [disabled]="!selectedProducts || !selectedProducts.length"></button>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="right">
+        <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import"
+                      class="mr-2 inline-block"></p-fileUpload>
+        <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"
+                (click)="dt.exportCSV()"></button>
+    </ng-template>
+</p-toolbar>
+<p-table #dt2 [value]="administrateurList" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [globalFilterFields]="['extends','nom','prenom',]" [tableStyle]="{ 'min-width': '75rem' }">
+    <ng-template pTemplate="caption">
+        <div class="flex">
+<span class="p-input-icon-left ml-auto">
+<i class="pi pi-search"></i>
+<input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword"/>
+</span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:3%">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th style="width:15%">extends</th>
+            <th style="width:15%">nom</th>
+            <th style="width:15%">prenom</th>
+            <th style="width:20%"></th>
+        </tr>
+        <tr>
+            <th style="width:3%"></th>
+            <th>
+                <p-columnFilter type="text" field="extends"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="nom"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="prenom"></p-columnFilter>
+            </th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-administrateur let-i="index">
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="administrateur"></p-tableCheckbox>
+            </td>
+            <td>
+                <span class="ml-1 vertical-align-middle">{{ administrateur.extends }}</span>
+            </td>
+            <td>
+                <span class="ml-1 vertical-align-middle">{{ administrateur.nom }}</span>
+            </td>
+            <td>
+                <span class="ml-1 vertical-align-middle">{{ administrateur.prenom }}</span>
+            </td>
+            <td>
+                <div style="width:100px">
+                    <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-info p-button-text"></p-button>
+                    <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger p-button-text"
+                              (click)="deleteById(administrateur.id,i)"></p-button>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5">No administrateur found.</td>
+        </tr>
+    </ng-template>
+</p-table>
